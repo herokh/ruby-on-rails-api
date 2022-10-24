@@ -3,4 +3,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get 'welcome', to: 'public#welcome'
+  get 'books', to: 'books#index'
+  get 'books/:id', to: 'books#show'
+  post 'books', to: 'books#create'
+  match 'books/:id', to: 'books#update', via: %i[put patch]
+  delete 'books/:id', to: 'books#destroy'
 end

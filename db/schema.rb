@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_19_131322) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_20_050733) do
+  create_table "articles", charset: "utf8", collation: "utf8_unicode_ci", options: "ENGINE=MyISAM", force: :cascade do |t|
+    t.string "title", limit: 128
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", charset: "utf8", collation: "utf8_unicode_ci", options: "ENGINE=MyISAM", force: :cascade do |t|
+    t.string "name", limit: 128
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", charset: "utf8", collation: "utf8_unicode_ci", options: "ENGINE=MyISAM", force: :cascade do |t|
+    t.string "remark", limit: 512
+    t.bigint "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+  end
+
+  create_table "user_books", charset: "utf8", collation: "utf8_unicode_ci", options: "ENGINE=MyISAM", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", null: false
+    t.index ["book_id"], name: "index_user_books_on_book_id"
+    t.index ["user_id"], name: "index_user_books_on_user_id"
+  end
+
   create_table "users", charset: "utf8", collation: "utf8_unicode_ci", options: "ENGINE=MyISAM", force: :cascade do |t|
-    t.text "first_name"
-    t.text "last_name"
+    t.string "first_name", limit: 128
+    t.string "last_name", limit: 128
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

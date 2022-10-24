@@ -1,17 +1,16 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: books
 #
 #  id         :bigint           not null, primary key
-#  first_name :string(128)
-#  last_name  :string(128)
+#  name       :string(128)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-one:
-  first_name: MyText
-  last_name: MyText
+require "test_helper"
 
-two:
-  first_name: MyText
-  last_name: MyText
+class BookTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end

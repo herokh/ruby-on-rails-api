@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id          :bigint           not null, primary key
+#  description :text(65535)
+#  title       :string(128)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+one:
+  title: MyText
+  description: MyText
+
+two:
+  title: MyText
+  description: MyText
